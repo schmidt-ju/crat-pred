@@ -164,7 +164,7 @@ class CratPred(pl.LightningModule):
         # Trigger weight freeze and optimizer reinit on mod_freeze_epoch
         if self.current_epoch == self.args.mod_freeze_epoch:
             self.freeze()
-            self.trainer.accelerator_backend.setup_optimizers(self.trainer)
+            self.trainer.accelerator.setup_optimizers(self.trainer)
 
         # Set learning rate according to current epoch
         for single_param in self.optimizers().param_groups:
